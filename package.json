@@ -1,0 +1,23 @@
+{
+  "name": "humaneval",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/lab": "^4.0.0-alpha.57",
+    "lodash": "^4.17.21",
+    "mongoose": "^6.0.12",
+    "next": "^12.0.0",
+    "react": "17.0.1",
+    "react-dom": "17.0.1",
+    "uuid": "^8.3.2",
+    "zustand": "^3.3.1",
+    "zustand-persist": "^0.3.0"
+  }
+}
