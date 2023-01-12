@@ -21,16 +21,20 @@ const Task = () => {
       const { task, progress, done } = await apiRequest('next-task', { id });
 
       if (done) {
-        // Go to end screen.
-        router.push('/end');
+        // Go to equations test.
+        router.push('/equations-test');
       } else {
         setTask(task);
-        setProgress(progress);
+        console.log('Progress:', progress);
+        setProgress(task.progress);
       }
     }
   });
 
+  console.log('Task solutions:', task &&  task.solutions);
+
   const next = async (response) => {
+    console.log('ID:', task.id, 'Response:', response);
     await apiRequest('save-answers',
                      { id,
                        stage: 'task',

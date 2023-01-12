@@ -9,14 +9,16 @@ export default function App() {
 
   const sessionId = useStore(state => state.id);
   const setID = useStore(state => state.setID);
+  const setMethod = useStore(state => state.setMethod);
 
   useEffect(async () => {
     const urlParams = new URLSearchParams(window.location.search);
-    const curriculum = urlParams.get('curriculum');
+    const method = urlParams.get('method');
 
     if (!sessionId) {
-      const { id } = await apiRequest('new-session', { curriculum });
+      const { id, m } = await apiRequest('new-session', { method });
       setID(id);
+      setMethod(m);
     }
 
     router.push('/instructions');

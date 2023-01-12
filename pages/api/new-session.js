@@ -6,17 +6,16 @@ export default async (req, res) => {
   const params = JSON.parse(req.query.params || '{}');
 
   const session = new UserSession({ id: newSessionId });
-  const curriculum = params.curriculum || 'random';
-
-  console.log('Curriculum:', curriculum);
+  const method = params.method || 'compile';
+  console.log('Method:', method);
 
   session.beginTimestamp = new Date();
   session.preTestResponses = [];
   session.exerciseResponses = [];
-  session.curriculum = curriculum;
+  session.method = method;
   session.postTestResponses = [];
 
   await session.save();
 
-  res.send({ id: newSessionId });
+  res.send({ id: newSessionId, method });
 }

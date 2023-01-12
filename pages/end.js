@@ -14,6 +14,7 @@ const CLASSES = [
   "Computer Programming",
 ];
 
+
 const End = () => {
   const id = useStore(state => state.id);
   const [age, setAge] = useState("18");
@@ -21,9 +22,10 @@ const End = () => {
   const [classesTaken, setClassesTaken] = useState({});
   const [experience, setExperience] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [algebraUse, setAlgebraUse] = useState("never");
 
   const submit = async () => {
-    await apiRequest('save-survey', { id, survey: { age, education, classesTaken, experience } });
+    await apiRequest('save-survey', { id, survey: { age, education, classesTaken, experience, algebraUse } });
     setSubmitted(true);
   }
 
@@ -46,6 +48,14 @@ const End = () => {
           <option value="sc">Some college</option>
           <option value="cd">College degree</option>
           <option value="gp">Graduate or Professional Degree</option>
+        </select>
+      </p>
+      <p>
+        How often have you used algebra in the last year?
+        <select onChange={e => setAlgebraUse(e.target.value)}>
+          <option value="never">Never</option>
+          <option value="sometimes">Sometimes</option>
+          <option value="frequently">Frequently</option>
         </select>
       </p>
       <p>

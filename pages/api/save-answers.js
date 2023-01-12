@@ -17,8 +17,13 @@ export default async (req, res) => {
 
   if (stage === "survey") {
     session.survey = answers;
+  } else if (stage === "intro") {
+    console.log("Saving intro responses:", answers);
+    session.introResponse = answers;
   } else if (stage === "task") {
     session.responses = _.concat(session.responses, answers);
+  } else if (stage === "equations") {
+    session.equationsTest = answers;
   } else {
     return res.json({ "error": "Invalid stage " + stage });
   }
